@@ -93,14 +93,13 @@ const allValues = stocks.flatMap(s => s.values);
 
 // X Scale - Maps dates to horizontal positions
 // TODO: Create a time scale using d3.scaleUtc()
-const xScale = d3.scaleUtc()
+const x = d3.scaleUtc()
   .domain([
     d3.min(stocks, s => d3.min(s.values, d => d.Date)),
     d3.max(stocks, s => d3.max(s.values, d => d.Date))
-  ])
+  ])        
   .range([0, width]);
 // Hint: Look at demo.js Section 5 for the pattern
-
 // Y Scale - Maps prices to vertical positions
 // TODO: Create a linear scale using d3.scaleLinear()
 const y = d3.scaleLinear()
@@ -117,7 +116,6 @@ const y = d3.scaleLinear()
 // Hint: d3.scaleOrdinal(d3.schemeCategory10).domain(mapping goes here)
 const color = d3.scaleOrdinal(d3.schemeCategory10)
     .domain(stocks.map(s => s.name));
-
 
 // ============================================================================
 // ADD AXES
